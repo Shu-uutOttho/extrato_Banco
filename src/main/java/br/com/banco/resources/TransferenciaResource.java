@@ -3,6 +3,7 @@ package br.com.banco.resources;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -51,14 +52,14 @@ public class TransferenciaResource {
 	
 	
 	@GetMapping(value = "/fullsearch")
-	public ResponseEntity<List<Transferencia>> findTransfer(
+	public ResponseEntity<Optional<Transferencia>> findTransfer(
 			@RequestParam(value = "nome" ,defaultValue = "") String nome,
 			@RequestParam(value = "tipo" ,defaultValue = "") String tipo,
 			@RequestParam(value = "id" ,  defaultValue = "" )Long id,
 			@RequestParam(value = "valor" ,defaultValue = "") Double valor,
 			@RequestParam(value = "startData", defaultValue = "") String startData,
 			@RequestParam(value = "endData"  , defaultValue = "") String endData) throws ParseException {
-		List<Transferencia> list = service.findTransfer(nome, tipo, id, valor, startData, endData);
+		Optional<Transferencia> list = service.findTransfer(nome, tipo, id, valor, startData, endData);
 		return ResponseEntity.ok().body(list);
 	}
 }

@@ -48,7 +48,7 @@ public class TransferenciaService {
 
 	
 
-	public List<Transferencia> findTransfer(String nome, String tipo, Long id, Double valor,String startData, String endData) throws ParseException {
+	public Optional<Transferencia> findTransfer(String nome, String tipo, Long id, Double valor,String startData, String endData) throws ParseException {
 		Date start = sdf.parse(startData);
 		Date end = sdf.parse(endData);
 
